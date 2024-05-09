@@ -1,4 +1,4 @@
-package word
+package robbe
 
 import (
   "fmt"
