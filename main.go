@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-  fmt.Println("heya")
+  fmt.Println("heya 2")
   word.Example()
 }
