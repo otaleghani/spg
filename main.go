@@ -2,7 +2,7 @@ package main
 
 import (
   "fmt"
-  "github.com/otaleghani/swg/word"
+  "github.com/otaleghani/swg/internal/word"
 )
 
 func main() {
