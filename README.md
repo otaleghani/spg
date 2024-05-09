@@ -1,0 +1,2 @@
+# swg
+Simple Words Generator
