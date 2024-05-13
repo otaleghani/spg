@@ -3,6 +3,7 @@ package spg
 import (
 	"testing"
   "fmt"
+  // "github.com/otaleghani/spg/internal/parser"
 )
 
 func Test_Robe(t *testing.T) {
@@ -13,6 +14,9 @@ func Test_Robe(t *testing.T) {
   fmt.Println(firstName)
   fmt.Println(lastName)
   fmt.Println(fullName)
+
+  // err = parser.DeleteCache()
+
   if err != nil {
     t.Fatal(err)
   }

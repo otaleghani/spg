@@ -1,3 +1,32 @@
+/********************************************************************
+
+Author      Oliviero Taleghani
+Date        2024-05-13
+
+Description
+Part of the formatter package, contains helper functions to format
+either strings or []strings.
+
+Usage
+  func Divider(words []string, div string) string
+  | Joins a []string into a string suing the given divider
+
+  func Switch(word *string, format string) error
+  | Formats word in either lower, upper, camel or title case
+
+Dependency
+  "strings"
+  "errors"
+  "unicode"
+
+Todo
+
+Changelog
+  [0.0.1]   2024-05-13
+  Added     Initial release
+
+********************************************************************/
+
 package formatter
 
 import (
