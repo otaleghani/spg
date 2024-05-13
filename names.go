@@ -37,7 +37,7 @@ import (
 )
 
 func FirstName(lang string, format string) (string, error) {
-  word, err := parser.ParseCvs("names/" + lang + ".csv")
+  word, err := parser.ParseCsv("names/" + lang + ".csv", 0)
   if err != nil {
     return "", err
   }
@@ -49,7 +49,7 @@ func FirstName(lang string, format string) (string, error) {
 }
 
 func LastName(lang string, format string) (string, error) {
-  word, err := parser.ParseCvs("surnames/" + lang + ".csv")
+  word, err := parser.ParseCsv("surnames/" + lang + ".csv", 0)
   if err != nil {
     return "", err
   }
@@ -72,4 +72,16 @@ func FullName(lang string, format string, div string) (string, error) {
   }
   array = append(array, firstName, lastName)
   return formatter.Divider(array, div), nil
+}
+
+func DomainName(format string) (string, error) {
+  word, err := parser.ParseCsv("domains/country.csv", 0)
+  if err != nil {
+    return "", err
+  }
+  err = formatter.Switch(&word, format)
+  if err != nil {
+    return "", err
+  }
+  return word, nil
 }

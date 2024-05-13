@@ -34,7 +34,7 @@ import (
   "time"
 )
 
-func ParseCvs(dict string) (string, error) {
+func ParseCsv(dict string, column int) (string, error) {
   _, err := os.Stat(cachePath() + dict)
   if os.IsNotExist(err) {
     err = initDict(dict)
@@ -54,7 +54,7 @@ func ParseCvs(dict string) (string, error) {
   }
   var words []string
   for _, record := range records {
-    words = append(words, record[0])
+    words = append(words, record[column])
   }
   rand.Seed(time.Now().UnixNano())
   if len(words) > 0 {
