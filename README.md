@@ -7,10 +7,10 @@ A simple utility used to generate fake data for testing purpose.
 - [ ] Words
 - [ ] Email
 - [ ] UUIDs
-- [ ] Names
-    - [ ] Full Names
-    - [ ] First Names
-    - [ ] Last names
+- [x] Names
+    - [x] Full Names
+    - [x] First Names
+    - [x] Last names
 - [ ] Time based
     - [ ] Birthdays
 - [ ] Finance records
