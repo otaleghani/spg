@@ -75,7 +75,7 @@ func FullName(lang string, format string, div string) (string, error) {
 }
 
 func DomainName(format string) (string, error) {
-  word, err := parser.ParseCsv("domains/country.csv", 0)
+  word, err := parser.ParseCsv("domains/country.csv", 1)
   if err != nil {
     return "", err
   }

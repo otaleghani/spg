@@ -3,7 +3,7 @@ package spg
 import (
 	"testing"
   "fmt"
-  // "github.com/otaleghani/spg/internal/parser"
+  "github.com/otaleghani/spg/internal/parser"
 )
 
 func Test_Robe(t *testing.T) {
@@ -17,7 +17,7 @@ func Test_Robe(t *testing.T) {
   fmt.Println(fullName)
   fmt.Println(domainName)
 
-  // err = parser.DeleteCache()
+  err = parser.DeleteCache()
 
   if err != nil {
     t.Fatal(err)
