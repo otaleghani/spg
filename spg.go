@@ -40,7 +40,11 @@ import (
   "github.com/otaleghani/spg/internal/parser"
   "github.com/otaleghani/spg/internal/formatter"
   //"errors"
+  "embed"
 )
+
+//go:embed dict/*
+var csvFile embed.FS
 
 func FirstName(lang string, format string) (string, error) {
   word, err := parser.ParseCvs("dict/names/" + lang + ".csv")

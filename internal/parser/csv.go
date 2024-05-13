@@ -7,6 +7,7 @@ import (
   "time"
 )
 
+
 func ParseCvs(dict string) (string, error) {
   file, err := os.Open(dict)
   if err != nil {
