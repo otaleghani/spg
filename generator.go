@@ -38,6 +38,7 @@ type Options struct {
   Format string
   Separator string
 }
+
 type Generator struct {
   Data map[string][]string
   Lang string
@@ -89,12 +90,12 @@ func (gen Generator) getRand(query string) string {
 }
 
 func (gen Generator) FirstName(opt Options) string {
-  result := gen.getRand("firstname")
+  result := gen.getRand("first_names")
   formatter.Switch(&result, opt.Format)
   return result
 }
-// func (gen Generator) FirstName(opt Options) string {
-//   result := gen.getRand("firstname")
-//   formatter.Switch(&result, opt.Format)
-//   return word
-// }
+func (gen Generator) LastName(opt Options) string {
+  result := gen.getRand("last_names")
+  formatter.Switch(&result, opt.Format)
+  return result
+}
