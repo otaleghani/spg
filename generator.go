@@ -32,6 +32,7 @@ import (
   "math/rand"
   "time"
   "strings"
+  "strconv"
 )
 
 type Options struct {
@@ -104,8 +105,43 @@ func (gen Generator) LastName(opt Options) string {
   return result
 }
 
+func (gen Generator) FullName(opt Options) string {
+  var array []string
+  array = append(array, gen.FirstName(opt), gen.LastName(opt))
+  result := formatter.Separator(array, opt.Separator)
+  return result
+}
+
 func (gen Generator) Word(opt Options) string {
-  result := gen.getRand("last_names")
+  result := gen.getRand("words")
   formatter.Switch(&result, opt.Format)
   return result
+}
+
+func (gen Generator) Domain(opt Options) string {
+  result := gen.getRand("domains")
+  formatter.Switch(&result, opt.Format)
+  return result
+}
+
+func (gen Generator) Email(opt Options) string {
+  username := gen.FirstName(opt)
+  provider := gen.Word(opt)
+  domain := gen.Domain(opt)
+  email := username + "@" + provider + domain
+  formatter.Switch(&email, opt.Format)
+  return email
+}
+
+func (gen Generator) CreditCard(opt Options) string {
+  var array []string
+  rand.Seed(time.Now().UnixNano())
+  for i := 0; i < 4; i++ {
+    currentString := ""
+    for j := 0; j < 4; j++ {
+      currentString = currentString + strconv.Itoa(rand.Intn(9))
+    }
+    array = append(array, currentString)
+  }
+  return strings.Join(array, opt.Separator)
 }

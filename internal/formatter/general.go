@@ -35,7 +35,7 @@ import (
   "unicode"
 )
 
-func Divider(words []string, div string) string {
+func Separator(words []string, div string) string {
   return strings.Join(words, div)
 }
 

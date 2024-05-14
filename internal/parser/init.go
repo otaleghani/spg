@@ -47,13 +47,11 @@ import (
   "net/http"
   "errors"
   "strings"
-  "fmt"
 )
 
 func initDict(dict string) error {
   prefix := "https://raw.githubusercontent.com/otaleghani/spg/main/dict/"
 
-  fmt.Println(dict)
   resp, err := http.Get(prefix + dict)
   if err != nil {
     return err

@@ -20,10 +20,13 @@ func Test_Generator(t *testing.T) {
   }
   
   for i := 0; i < 5000; i++ {
-    fmt.Printf("%v, %v, %v", 
-      gen.FirstName(Options{}),
-      gen.LastName(Options{}),
-      gen.Word(Options{}),
+    fmt.Printf("%v, %v, %v, %v, %v, %v\n", 
+      gen.FirstName(Options{Format:"title"}),
+      gen.LastName(Options{Format:"lower"}),
+      gen.Word(Options{Format:"upper"}),
+      gen.FullName(Options{Format:"upper",Separator:" "}),
+      gen.Email(Options{Format:"lower",Separator:" "}),
+      gen.CreditCard(Options{Format:"lower",Separator:"-"}),
     )
   }
 }

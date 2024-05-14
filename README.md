@@ -4,8 +4,8 @@ A simple utility used to generate fake data for testing purpose.
 
 ## Generations to add
 
-- [ ] Words
-- [ ] Email
+- [x] Words
+- [x] Email
 - [ ] UUIDs
 - [x] Names
     - [x] Full Names
@@ -14,14 +14,17 @@ A simple utility used to generate fake data for testing purpose.
 - [ ] Time based
     - [ ] Birthdays
 - [ ] Finance records
+    - [x] Credit cards
 - [ ] Numbers
 - [ ] Usernames
 - [ ] Passwords
 - [ ] Nationality
 
-## Future Features
+## To do
 
-- [ ] Localization
+- [ ] Localization methods (auto-translation could be good enough)
+- [ ] Localization (it)
+- [ ] Create a better db
 
 ## Data in use
 
