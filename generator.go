@@ -48,7 +48,10 @@ func NewGenerator(
   source string,
   column int,
 ) (Generator, error) {
-  data, err := parser.GetColumnData(source, "/" + lang + ".csv", column)
+  data, err := parser.ParseCsvColumnData(
+    source + "/" + lang + ".csv",
+    column,
+  )
   if err != nil {
     return Generator{}, err
   }
@@ -70,8 +73,8 @@ func (generator Generator) Get() string {
   rand.Seed(time.Now().UnixNano())
   if len(generator.Data) > 0 {
     randomWord := generator.Data[rand.Intn(len(generator.Data))]
-    formatter.Switch(&randomWord, generator.Options.format)
-    return randomWord, nil
+    formatter.Switch(&randomWord, generator.Options.Format)
+    return randomWord
   } else {
     return ""
   }

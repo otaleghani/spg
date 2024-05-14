@@ -53,7 +53,6 @@ func Switch(word *string, format string) error {
   case "camel":
     *word = strings.ToLower(*word) 
     var result strings.Builder
-    
     for i, v := range *word {
       if i == 0 {
         result.WriteRune(unicode.ToUpper(v))
@@ -61,7 +60,6 @@ func Switch(word *string, format string) error {
         result.WriteRune(v)
       }
     }
-
     *word = result.String()
     return nil
   default: 
@@ -70,7 +68,7 @@ func Switch(word *string, format string) error {
 }
 
 func FormatterCheck(format string) (string, error) {
-  validFormats := {"lower", "upper", "title", "camel"}
+  validFormats := []string{"lower", "upper", "title", "camel"}
   for _, v := range validFormats {
     if strings.ToLower(format) == v {
       return strings.ToLower(format), nil

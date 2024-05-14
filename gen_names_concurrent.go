@@ -24,33 +24,32 @@ Changelog
 package spg
 
 import (
-  "github.com/otaleghani/spg/internal/parser"
+  // "github.com/otaleghani/spg/internal/parser"
   "github.com/otaleghani/spg/internal/formatter"
   "math/rand"
   "time"
 )
 
+func FirstNames(lang string, format string) (Generator, error) {
+  gen, err := NewGenerator(lang, format, "names", 0)
+  if err != nil {
+    return Generator{}, err
+  }
+  return gen, nil
+}
+func LastNames(lang string, format string) (Generator, error) {
+  gen, err := NewGenerator(lang, format, "surnames", 0)
+  if err != nil {
+    return Generator{}, err
+  }
+  return gen, nil
+}
 
 type FullNameGenerator struct {
   Options GeneratorMetadata
-  Data_FirstName []string
-  Data_LastName []string
+  Data_FirstNames []string
+  Data_LastNames []string
 }
-
-func FirstNames(lang string, format string) (Generator, error) {
-  if gen, err := NewGenerator(lang, format, "names", 0); err != nil {
-    return Generator{}, err
-  }
-  return gen, nil
-}
-
-func LastNames(lang string, format string) (Generator, error) {
-  if gen, err := NewGenerator(lang, format, "surnames", 0); err != nil {
-    return Generator{}, err
-  }
-  return gen, nil
-}
-
 func FullNames(lang string, format string, separator string) (FullNameGenerator, error) {
   firstNames, err := FirstNames(lang, format)
   if err != nil {
@@ -62,7 +61,7 @@ func FullNames(lang string, format string, separator string) (FullNameGenerator,
   }
   lowerFormat, err := formatter.FormatterCheck(format)
   if err != nil {
-    return Generator{}, err
+    return FullNameGenerator{}, err
   }
   result := FullNameGenerator{
     Options: GeneratorMetadata{
@@ -70,8 +69,8 @@ func FullNames(lang string, format string, separator string) (FullNameGenerator,
       Format: lowerFormat,
       Separator: separator,
     },
-    Data_FirstName: firstNames.Data,
-    Data_LastName: lastNames.Data,
+    Data_FirstNames: firstNames.Data,
+    Data_LastNames: lastNames.Data,
   }
   return result, nil
 }
@@ -79,19 +78,20 @@ func FullNames(lang string, format string, separator string) (FullNameGenerator,
 func (gen FullNameGenerator) Get() string {
   var array []string
   rand.Seed(time.Now().UnixNano())
-  if len(gen.FirstNames) > 0 {
-    randomFN := gen.FirstNames[rand.Intn(len(gen.FirstNames))]
+  if len(gen.Data_FirstNames) > 0 {
+    randomFN := gen.Data_FirstNames[rand.Intn(len(gen.Data_FirstNames))]
+    formatter.Switch(&randomFN, gen.Options.Format)
     array = append(array, randomFN)
   } else {
     return ""
   }
-  if len(gen.LastNames) > 0 {
-    randomLN := gen.LastNames[rand.Intn(len(gen.LastNames))]
+  if len(gen.Data_LastNames) > 0 {
+    randomLN := gen.Data_LastNames[rand.Intn(len(gen.Data_LastNames))]
+    formatter.Switch(&randomLN, gen.Options.Format)
     array = append(array, randomLN)
   } else {
     return ""
   }
-  randomName := formatter.Divider(array, gen.Options.Divider)
-  formatter.Switch(&randomName, generator.Options.format)
+  randomName := formatter.Divider(array, gen.Options.Separator)
   return randomName
 }

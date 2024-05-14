@@ -34,12 +34,10 @@ package spg
 import (
   "github.com/otaleghani/spg/internal/parser"
   "github.com/otaleghani/spg/internal/formatter"
-  "math/rand"
-  "time"
 )
 
-func FirstName(lang string, format string) (string, error) {
-  word, err := parser.ParseCsv("names/" + lang + ".csv", 0)
+func SingleFirstName(lang string, format string) (string, error) {
+  word, err := parser.ParseCsvSingleWord("names/" + lang + ".csv", 0)
   if err != nil {
     return "", err
   }
@@ -50,8 +48,8 @@ func FirstName(lang string, format string) (string, error) {
   return word, nil
 }
 
-func LastName(lang string, format string) (string, error) {
-  word, err := parser.ParseCsv("surnames/" + lang + ".csv", 0)
+func SingleLastName(lang string, format string) (string, error) {
+  word, err := parser.ParseCsvSingleWord("surnames/" + lang + ".csv", 0)
   if err != nil {
     return "", err
   }
@@ -62,13 +60,13 @@ func LastName(lang string, format string) (string, error) {
   return word, nil
 }
 
-func FullName(lang string, format string, div string) (string, error) {
+func SingleFullName(lang string, format string, div string) (string, error) {
   var array []string
-  firstName, err := FirstName(lang, format)
+  firstName, err := SingleFirstName(lang, format)
   if err != nil {
     return "", err
   }
-  lastName, err := LastName(lang, format)
+  lastName, err := SingleLastName(lang, format)
   if err != nil {
     return "", err
   }
@@ -76,8 +74,8 @@ func FullName(lang string, format string, div string) (string, error) {
   return formatter.Divider(array, div), nil
 }
 
-func DomainName(format string) (string, error) {
-  word, err := parser.ParseCsv("domains/country.csv", 1)
+func SingleDomainName(format string) (string, error) {
+  word, err := parser.ParseCsvSingleWord("domains/country.csv", 1)
   if err != nil {
     return "", err
   }

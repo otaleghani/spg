@@ -7,10 +7,10 @@ import (
 )
 
 func Test_General(t *testing.T) {
-  firstName, err := FirstName("en", "camel")
-  lastName, err := LastName("en", "camel")
-  fullName, err := FullName("en", "camel", " ")
-  domainName, err := DomainName("camel")
+  firstName, err := SingleFirstName("en", "camel")
+  lastName, err := SingleLastName("en", "camel")
+  fullName, err := SingleFullName("en", "camel", " ")
+  domainName, err := SingleDomainName("camel")
 
   fmt.Println(firstName)
   fmt.Println(lastName)
@@ -26,7 +26,7 @@ func Test_General(t *testing.T) {
 
 func Test_5000(t *testing.T) {
   for i := 0; i < 50000; i++ {
-    _, err := FirstName("en", "camel")
+    _, err := SingleFirstName("en", "camel")
     if err != nil {
       t.Fatal(err)
     }
@@ -34,15 +34,13 @@ func Test_5000(t *testing.T) {
 }
 
 func Test_5000c(t *testing.T) {
-  names, err := NamesGenerator()
+  array := []string{}
+  names, err := FullNames("en", "camel", "-")
   if err != nil {
     t.Fatal(err)
   }
   for i := 0; i < 50000; i++ {
-    _, err := names.GetRand()
-    if err != nil {
-      t.Fatal(err)
-    }
-
+    array = append(array, names.Get())
   }
+  fmt.Println(array)
 }

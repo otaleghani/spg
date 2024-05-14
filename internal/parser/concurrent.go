@@ -25,7 +25,7 @@ import (
   "encoding/csv"
 ) 
 
-func GetColumnData(dict string, column int) ([]string, error) {
+func ParseCsvColumnData(dict string, column int) ([]string, error) {
   _, err := os.Stat(cachePath() + dict)
   if os.IsNotExist(err) {
     err = initDict(dict)

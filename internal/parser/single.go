@@ -34,7 +34,7 @@ import (
   "time"
 )
 
-func ParseCsv(dict string, column int) (string, error) {
+func ParseCsvSingleWord(dict string, column int) (string, error) {
   _, err := os.Stat(cachePath() + dict)
   if os.IsNotExist(err) {
     err = initDict(dict)
