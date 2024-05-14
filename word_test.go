@@ -19,7 +19,11 @@ func Test_Generator(t *testing.T) {
     t.Fatal(err)
   }
   
-  for i := 0; i < 50000; i++ {
-    fmt.Println(gen.FirstName(Options{}) + " " + gen.LastName(Options{}))
+  for i := 0; i < 5000; i++ {
+    fmt.Printf("%v, %v, %v", 
+      gen.FirstName(Options{}),
+      gen.LastName(Options{}),
+      gen.Word(Options{}),
+    )
   }
 }

@@ -50,10 +50,10 @@ func CreateGenerator(lang string, format string) (Generator, error) {
   dicts["last_names"] = 0
   dicts["words"] = 0
 
-  generalDicts := make(map[string]int)
-  generalDicts["domains"] = 1
-
-  gen := Generator{Lang:strings.ToLower(lang), Data: make(map[string][]string)}
+  gen := Generator{
+    Lang:strings.ToLower(lang), 
+    Data: make(map[string][]string),
+  }
   for name, column := range(dicts) {
     data, err := parser.ParseCsvColumnData(
       name + "/" + strings.ToLower(lang) + ".csv",
@@ -65,6 +65,9 @@ func CreateGenerator(lang string, format string) (Generator, error) {
     gen.Data[name] = data
   }
   
+  generalDicts := make(map[string]int)
+  generalDicts["domains"] = 1
+
   for name, column := range(generalDicts) {
     data, err := parser.ParseCsvColumnData(
       "general/" + strings.ToLower(name) + ".csv",
@@ -94,7 +97,14 @@ func (gen Generator) FirstName(opt Options) string {
   formatter.Switch(&result, opt.Format)
   return result
 }
+
 func (gen Generator) LastName(opt Options) string {
+  result := gen.getRand("last_names")
+  formatter.Switch(&result, opt.Format)
+  return result
+}
+
+func (gen Generator) Word(opt Options) string {
   result := gen.getRand("last_names")
   formatter.Switch(&result, opt.Format)
   return result
