@@ -68,3 +68,13 @@ func Switch(word *string, format string) error {
     return errors.New("No formatter found")
   }
 }
+
+func FormatterCheck(format string) (string, error) {
+  validFormats := {"lower", "upper", "title", "camel"}
+  for _, v := range validFormats {
+    if strings.ToLower(format) == v {
+      return strings.ToLower(format), nil
+    }
+  }
+  return "", errors.New("Format not found.")
+}

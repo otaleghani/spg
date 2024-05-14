@@ -17,11 +17,11 @@ A simple utility used to generate fake data for testing purpose.
 - [ ] Numbers
 - [ ] Usernames
 - [ ] Passwords
+- [ ] Nationality
 
 ## Future Features
 
 - [ ] Localization
-
 
 ## Data in use
 

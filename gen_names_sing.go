@@ -34,6 +34,8 @@ package spg
 import (
   "github.com/otaleghani/spg/internal/parser"
   "github.com/otaleghani/spg/internal/formatter"
+  "math/rand"
+  "time"
 )
 
 func FirstName(lang string, format string) (string, error) {
