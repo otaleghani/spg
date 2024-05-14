@@ -4,7 +4,9 @@ Author      Oliviero Taleghani
 Date        2024-05-14
 
 Description
-Helper functions for creating and quering generators.
+Helper functions for creating and quering the Generator. This will be
+the struct used to store all of the parsed csv data and it will be
+used to generate the different random results.
 
 Usage
 
@@ -29,53 +31,56 @@ import (
   "github.com/otaleghani/spg/internal/formatter"
   "math/rand"
   "time"
+  "strings"
 )
 
-type GeneratorMetadata struct {
-  Lang string
+type Options struct {
   Format string
   Separator string
 }
-
 type Generator struct {
-  Options GeneratorMetadata
-  Data []string
+  Data map[string][]string
+  Lang string
 }
 
-func NewGenerator(
-  lang string, 
-  format string, 
-  source string,
-  column int,
-) (Generator, error) {
-  data, err := parser.ParseCsvColumnData(
-    source + "/" + lang + ".csv",
-    column,
-  )
-  if err != nil {
-    return Generator{}, err
+func CreateGenerator(lang string, format string) (Generator, error) {
+  dicts := make(map[string]int)
+  dicts["first_names"] = 0
+  dicts["last_names"] = 0
+  dicts["words"] = 0
+  dicts["domains"] = 1
+
+  gen := Generator{Lang:strings.ToLower(lang), Data: make(map[string][]string)}
+  for name, column := range(dicts) {
+    data, err := parser.ParseCsvColumnData(
+      name + "/" + strings.ToLower(lang) + ".csv",
+      column,
+    )
+    if err != nil {
+      return Generator{}, err
+    }
+    gen.Data[name] = data
   }
-  lowerFormat, err := formatter.FormatterCheck(format)
-  if err != nil {
-    return Generator{}, err
-  }
-  result := Generator{
-    Options: GeneratorMetadata{
-      Lang: lang,
-      Format: lowerFormat,
-    },
-    Data: data,
-  }
-  return result, nil
+  return gen, nil
 }
 
-func (generator Generator) Get() string {
+func (gen Generator) getRand(query string) string {
   rand.Seed(time.Now().UnixNano())
-  if len(generator.Data) > 0 {
-    randomWord := generator.Data[rand.Intn(len(generator.Data))]
-    formatter.Switch(&randomWord, generator.Options.Format)
+  if len(gen.Data[query]) > 0 {
+    randomWord := gen.Data[query][rand.Intn(len(gen.Data[query]))]
     return randomWord
   } else {
     return ""
   }
 }
+
+func (gen Generator) FirstName(opt Options) string {
+  result := gen.getRand("firstname")
+  formatter.Switch(&result, opt.Format)
+  return result
+}
+// func (gen Generator) FirstName(opt Options) string {
+//   result := gen.getRand("firstname")
+//   formatter.Switch(&result, opt.Format)
+//   return word
+// }

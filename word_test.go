@@ -24,23 +24,32 @@ func Test_General(t *testing.T) {
   }
 }
 
-func Test_5000(t *testing.T) {
-  for i := 0; i < 50000; i++ {
-    _, err := SingleFirstName("en", "camel")
-    if err != nil {
-      t.Fatal(err)
-    }
-  }
-}
+// func Test_5000(t *testing.T) {
+//   for i := 0; i < 50000; i++ {
+//     _, err := SingleFirstName("en", "camel")
+//     if err != nil {
+//       t.Fatal(err)
+//     }
+//   }
+// }
+// 
+// func Test_5000c(t *testing.T) {
+//   array := []string{}
+//   names, err := FullNames("en", "camel", "-")
+//   if err != nil {
+//     t.Fatal(err)
+//   }
+//   for i := 0; i < 50000; i++ {
+//     array = append(array, names.Get())
+//   }
+//   fmt.Println(array)
+// }
 
-func Test_5000c(t *testing.T) {
-  array := []string{}
-  names, err := FullNames("en", "camel", "-")
+func Test_Generator(t *testing.T) {
+  gen, err := CreateGenerator("en", "camel")
   if err != nil {
     t.Fatal(err)
   }
-  for i := 0; i < 50000; i++ {
-    array = append(array, names.Get())
-  }
-  fmt.Println(array)
+  
+  fmt.Println(gen.FirstName(Options{}))
 }
