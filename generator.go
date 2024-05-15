@@ -40,10 +40,17 @@ type Options struct {
   Separator string
 }
 
+type Spg struct {
+  Format string
+  Separator string
+}
+
 type Generator struct {
   Data map[string][]string
   Lang string
 }
+
+// You could just add everything into a []string, so that you don't have to do anything strange with this. No parser, no Formatter. Nothing.
 
 func CreateGenerator(lang string, format string) (Generator, error) {
   dicts := make(map[string]int)
@@ -145,3 +152,6 @@ func (gen Generator) CreditCard(opt Options) string {
   }
   return strings.Join(array, opt.Separator)
 }
+
+
+
