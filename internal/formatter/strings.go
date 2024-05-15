@@ -7,13 +7,6 @@ Description
 Part of the formatter package, contains helper functions to format
 either strings or []strings.
 
-Usage
-  func Divider(words []string, div string) string
-  | Joins a []string into a string suing the given divider
-
-  func Switch(word *string, format string) error
-  | Formats word in either lower, upper, camel or title case
-
 Dependency
   "strings"
   "errors"
@@ -22,6 +15,9 @@ Dependency
 Todo
 
 Changelog
+  [0.0.2]   2024-05-15
+  Add       Refactor 
+
   [0.0.1]   2024-05-13
   Added     Initial release
 
@@ -31,7 +27,6 @@ package formatter
 
 import (
   "strings"
-  "errors"
   "unicode"
 )
 
@@ -39,17 +34,17 @@ func Separator(words []string, div string) string {
   return strings.Join(words, div)
 }
 
-func Switch(word *string, format string) error {
+func FormatString(word *string, format string) {
   switch format {
   case "lower":
     *word = strings.ToLower(*word) 
-    return nil
+    return 
   case "upper":
     *word = strings.ToUpper(*word) 
-    return nil
+    return
   case "title":
     *word = strings.ToTitle(*word) 
-    return nil
+    return
   case "camel":
     *word = strings.ToLower(*word) 
     var result strings.Builder
@@ -61,18 +56,8 @@ func Switch(word *string, format string) error {
       }
     }
     *word = result.String()
-    return nil
+    return 
   default: 
-    return errors.New("No formatter found")
+    return 
   }
-}
-
-func FormatterCheck(format string) (string, error) {
-  validFormats := []string{"lower", "upper", "title", "camel"}
-  for _, v := range validFormats {
-    if strings.ToLower(format) == v {
-      return strings.ToLower(format), nil
-    }
-  }
-  return "", errors.New("Format not found.")
 }
