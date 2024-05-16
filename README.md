@@ -1,5 +1,7 @@
 # Simple Placeholder Generator
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/otaleghani/spg)](https://goreportcard.com/report/github.com/otaleghani/spg)
+
 A simple utility used to generate fake data for testing purpose.
 
 ## Installation
