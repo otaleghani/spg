@@ -1,4 +1,4 @@
-name: tests
+name: Tests
 
 on:
   pull_request:
@@ -8,39 +8,48 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Go
         uses: actions/setup-go@v4
-
-      - name: Installs gosec
-        uses: go install github.com/securego/gosec/v2/cmd/gosec@latest
-
       - name: Runs tests
         run: go test ./... -cover
 
-      - name: Runs gosec
-        run: gosec ./...
-
-  style:
-    name: Style
+  security:
+    name: Security
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Setup Go
         uses: actions/setup-go@v4
+      - name: Installs gosec
+        uses: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      - name: Runs gosec
+        run: gosec ./...
 
-      - name: Installs staticcheck
-        uses: go install honnef.co/go/tools/cmd/staticckeck@latest
 
+  style:
+    name: Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
       - name: Runs styles checks
         run: test -z $(go fmt ./...) && echo $?
 
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
+      - name: Installs staticcheck
+        uses: go install honnef.co/go/tools/cmd/staticckeck@latest
       - name: Runs staticcheck
         run: staticcheck ./...
