@@ -16,7 +16,7 @@ Todo
 
 Changelog
   [0.0.2]   2024-05-15
-  Add       Refactor 
+  Add       Refactor
 
   [0.0.1]   2024-05-13
   Added     Initial release
@@ -26,38 +26,38 @@ Changelog
 package formatter
 
 import (
-  "strings"
-  "unicode"
+	"strings"
+	"unicode"
 )
 
 func Separator(words []string, div string) string {
-  return strings.Join(words, div)
+	return strings.Join(words, div)
 }
 
 func FormatString(word *string, format string) {
-  switch format {
-  case "lower":
-    *word = strings.ToLower(*word) 
-    return 
-  case "upper":
-    *word = strings.ToUpper(*word) 
-    return
-  case "title":
-    *word = strings.ToTitle(*word) 
-    return
-  case "camel":
-    *word = strings.ToLower(*word) 
-    var result strings.Builder
-    for i, v := range *word {
-      if i == 0 {
-        result.WriteRune(unicode.ToUpper(v))
-      } else {
-        result.WriteRune(v)
-      }
-    }
-    *word = result.String()
-    return 
-  default: 
-    return 
-  }
+	switch format {
+	case "lower":
+		*word = strings.ToLower(*word)
+		return
+	case "upper":
+		*word = strings.ToUpper(*word)
+		return
+	case "title":
+		*word = strings.ToTitle(*word)
+		return
+	case "camel":
+		*word = strings.ToLower(*word)
+		var result strings.Builder
+		for i, v := range *word {
+			if i == 0 {
+				result.WriteRune(unicode.ToUpper(v))
+			} else {
+				result.WriteRune(v)
+			}
+		}
+		*word = result.String()
+		return
+	default:
+		return
+	}
 }
