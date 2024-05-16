@@ -42,7 +42,7 @@ func GetDict(lang, source string) ([]string, error) {
 		if values, ok := dict[source]; ok {
 			return values, nil
 		}
-		return nil, errors.New(fmt.Sprint("Cannot find source %v\n", source))
+		return nil, errors.New(fmt.Sprintf("Cannot find source %v\n", source))
 	}
-	return nil, errors.New(fmt.Sprint("Cannot find language %v\n", lang))
+	return nil, errors.New(fmt.Sprintf("Cannot find language %v\n", lang))
 }

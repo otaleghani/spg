@@ -25,7 +25,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
       - name: Installs gosec
-        uses: go install github.com/securego/gosec/v2/cmd/gosec@latest
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
       - name: Runs gosec
         run: gosec ./...
 
@@ -50,6 +50,6 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
       - name: Installs staticcheck
-        uses: go install honnef.co/go/tools/cmd/staticckeck@latest
+        run: go install honnef.co/go/tools/cmd/staticckeck@latest
       - name: Runs staticcheck
         run: staticcheck ./...
