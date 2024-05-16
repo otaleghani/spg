@@ -32,7 +32,3 @@ func (g Generator) randomString(data []string, format string) string {
   }
   return ""
 }
-
-func (g Generator) randomNumber(dice int) int {
-  return rand.Intn(dice)
-}

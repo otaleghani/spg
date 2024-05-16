@@ -4,10 +4,11 @@ A simple utility used to generate fake data for testing purpose.
 
 ## Generations to add
 
-- [x] Words
-- [x] Email
-- [ ] UUIDs
 - [x] Names
+    - [x] Female First Name
+    - [x] Female Full Name
+    - [x] Male First Name
+    - [x] Male Full Name
     - [x] Full Names
     - [x] First Names
     - [x] Last names
@@ -19,12 +20,14 @@ A simple utility used to generate fake data for testing purpose.
 - [ ] Usernames
 - [ ] Passwords
 - [ ] Nationality
+- [ ] Words
+- [ ] Email
+- [ ] UUIDs
 
 ## To do
 
 - [ ] Localization methods (auto-translation could be good enough)
-- [ ] Localization (it)
-- [ ] Create a better db
+- [ ] Use GPT4 to create 100 words for different languages
 
 ## Data in use
 

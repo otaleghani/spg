@@ -5,21 +5,29 @@ import (
   "fmt"
 )
 
-// Animals
-// 
-
 var dicts = map[string]map[string][]string{
   "en-usa": {
+
+    // People
     "titles_male": {"Mr.", "Doc."},
     "titles_female": {"Mrs.", "Doc."},
     "gender": {"Male", "Female", "Other"},
     "first_names_female": en_females_first_names,
     "first_names_male": en_males_first_names,
     "last_names": en_last_names,
-    "places": {},
+
+    // Places 
+    "locale_cities": en_usa_cities,
+    //"": en_usa_
+    "locale_streets": en_usa_streets,
+    "locale_states": en_usa_states,
+    "locale_countries": []string{"United States"},
+
+    "cities": en_cities,
+    "streets": en_streets,
+    "states": en_states,
+    "countries": en_countries,
   },
-  "it": {},
-  "general": {}
 }
 
 func GetDict(lang, source string) ([]string, error) {
