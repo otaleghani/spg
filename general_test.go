@@ -25,8 +25,7 @@ func Test_Things(t *testing.T) {
 	for i := 0; i < num_tests; i++ {
 		fmt.Printf(
 			"Result: %v\n\n\n",
-			g.Product().Thing(opt),
-			// g.Product().ProductDescription(opt),
+			g.Product().CompleteProductName(opt),
 		)
 	}
 }

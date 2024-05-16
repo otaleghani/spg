@@ -51,39 +51,169 @@ Most of the times you will use this package inside of a loop to get more values 
 
 Keep in mind that this package can generate around 300.000 records in one second for single fields calls (like Person().FirstName) and around 200.000 records for more complex queries (like Product().ProductName)
 
-## Features
+## Available Data
 
-- International
+### Person
 
+The neutral version (`FirstName()` and `FullName()`) randomly chooses between the male or fema dictionary.
 
-## Generations to add
+``` go
+spg := spg.New("en_usa")
 
-- [x] Names
-    - [x] Female First Name
-    - [x] Female Full Name
-    - [x] Male First Name
-    - [x] Male Full Name
-    - [x] Full Names
-    - [x] First Names
-    - [x] Last names
-- [ ] Time based
-    - [ ] Birthdays
-- [ ] Finance records
-    - [x] Credit cards
-- [ ] Numbers
-- [ ] Usernames
-- [ ] Passwords
-- [ ] Nationality
-- [ ] Words
-- [ ] Email
-- [ ] UUIDs
+spg.Person().FirstName() 
+// e.g. "Jacob"
+
+spg.Person().MaleFirstName() 
+// e.g. "Michael"
+
+spg.Person().FemaleFirstName() 
+// e.g. "Emily"
+
+spg.Person().LastName() 
+// e.g. "Smith"
+
+spg.Person().FullName() 
+// e.g. "Hannah Johnson"
+
+spg.Person().MaleFullName() 
+// e.g. "Matthew Williams"
+
+spg.Person().FemaleFullName() 
+// e.g. "Madison Brown"
+```
+
+### Place
+
+The `Locale` version of the places takes data from a pool of names for cities, streets and states related to the chosen language, while the non-locale kind takes a more broad database.
+The address function is called `AddressEn()` becaouse some countries use a different approach to writing addresses. 
+
+``` go
+spg := spg.New("en_usa")
+
+spg.Place().City() 
+// e.g. "St. Petersburg"
+
+spg.Place().CityLocale() 
+// e.g. "New York"
+
+spg.Place().Street() 
+// e.g. "Bourke Street"
+
+spg.Place().StreetLocale() 
+// e.g. "Main Street"
+
+spg.Place().State() 
+// e.g. "Tokyo"
+
+spg.Place().StateLocale() 
+// e.g. "Alabama"
+
+spg.Place().Country() 
+// e.g. "Thailand"
+
+spg.Place().CountryLocale() 
+// e.g. "United States"
+
+spg.Place().AddressEn() 
+// e.g. 102 La rambla
+// Aurora, Yukon 96121
+// Zambia
+
+spg.Place().AddressEnLocale() 
+// 100 Riverside drive
+// Boise, Washington 14139
+// United states
+```
+### Products
+
+N.B.: Complete Product Names and Product descriptions are hilarious.
+
+``` go
+spg := spg.New("en_usa")
+
+spg.Product().Thing() 
+// e.g. "Smartwatch"
+
+spg.Product().Brand() 
+// e.g. "Apple"
+
+spg.Product().Technology() 
+// e.g. "Artificial Intelligence"
+
+spg.Product().ProductName() 
+// e.g. "QuickWave"
+
+spg.Product().CompleteProductName() 
+// e.g. "Heating pad Dolce & gabbana Quickquench with Edge computing"
+
+spg.Product().ProductDescription() 
+// e.g. "Optimize your home entertainment with our streaming device, designed with Wi-fi 6. enjoy seamless streaming, high-definition video, and a user-friendly interface, all enabled by this advanced technology. transform your viewing experience with the superior capabilities of Wi-fi 6."
+```
+
+### Numbers
+``` go
+spg := spg.New("en_usa")
+max := 5000
+
+spg.StringNumber(max)
+// e.g. "512"
+// Returns a random positive number converted in a string from 0 to max
+
+spg.StringNumberFixed(5)
+// e.g. 92749
+// Returns a random combination of numbers. The specified number is the lenght of the returned string..
+```
 
 ## To do
 
-- [ ] Localization methods (auto-translation could be good enough)
-- [ ] Use GPT4 to create 100 words for different languages
+- [ ] Add italian locale
 
-## Data in use
+### Generations to add
 
-The data in use 
+#### Products
+- [ ] UUIDs
+
+#### Person
+- [ ] Email
+- [ ] Username
+- [ ] Password
+- [ ] Birthday
+- [ ] Occupations
+
+#### Miscellaneous
+- [ ] Industries
+- [ ] Hobbies
+
+#### Work
+
+
+#### Words
+- [ ] Random word
+- [ ] Random phrase
+- [ ] Random adjective
+
+#### Financial
+- [ ] Credit cards
+- [ ] Finantial record
+
+#### Animals
+- [ ] Mammals
+- [ ] Birds
+- [ ] Fishes
+- [ ] Insects
+
+#### Adjectives
+- [ ] Positive
+- [ ] Negative
+- [ ] Colors
+- [ ] Sizes
+
+#### Dates
+- [ ] Months
+- [ ] Weekdays
+- [ ] Time zones
+
+## About the data
+
+The data in use is generated using GPT4.
 
