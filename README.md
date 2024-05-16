@@ -45,11 +45,11 @@ func main(){
 Most of the times you will use this package inside of a loop to get more values in one go.
 
 ``` go
-    spg := spg.New("en_usa")
+spg := spg.New("en_usa")
 
-    for i := 0; i < 5000; i++ {
-        fmt.Println(spg.Person().FullName())
-    }
+for i := 0; i < 5000; i++ {
+    fmt.Println(spg.Person().FullName())
+}
 ```
 
 Keep in mind that this package can generate around 300.000 records in one second for single fields calls (like Person().FirstName) and around 200.000 records for more complex queries (like Product().ProductName)
