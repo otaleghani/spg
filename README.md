@@ -219,4 +219,3 @@ spg.StringNumberFixed(5)
 ## About the data
 
 The data in use is generated using GPT4.
-
