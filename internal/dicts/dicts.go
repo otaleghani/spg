@@ -16,17 +16,24 @@ var dicts = map[string]map[string][]string{
     "first_names_male": en_males_first_names,
     "last_names": en_last_names,
 
-    // Places 
+    // Places locale
     "locale_cities": en_usa_cities,
-    //"": en_usa_
     "locale_streets": en_usa_streets,
     "locale_states": en_usa_states,
     "locale_countries": []string{"United States"},
 
+    // Places
     "cities": en_cities,
     "streets": en_streets,
     "states": en_states,
     "countries": en_countries,
+
+    // Products
+    "products": en_products,
+    "brands": en_brands,
+    "technologies": en_technologies,
+    "product_names": en_product_names,
+    "product_descriptions": en_product_descriptions,
   },
 }
 
