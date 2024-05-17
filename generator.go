@@ -3,7 +3,6 @@ package spg
 import (
 	"github.com/otaleghani/spg/internal/formatter"
 	"math/rand"
-  "crypto/rand"
 	"time"
 )
 
