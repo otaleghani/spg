@@ -49,15 +49,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Go
         uses: actions/setup-go@v4
-
-      #- name: Install dependencies
-      #  run: go mod tidy
-
-      #- name: Installs staticcheck
-      #  run: go install honnef.co/go/tools/cmd/staticcheck@latest
-      #- name: Runs staticcheck
-      #  run: staticcheck ./...
-
       - name: Runs staticcheck
         uses: dominikh/staticcheck-action@v1
         with:
