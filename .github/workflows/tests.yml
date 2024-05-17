@@ -50,10 +50,15 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
 
-      - name: Install dependencies
-        run: go mod tidy
+      #- name: Install dependencies
+      #  run: go mod tidy
 
-      - name: Installs staticcheck
-        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+      #- name: Installs staticcheck
+      #  run: go install honnef.co/go/tools/cmd/staticcheck@latest
+      #- name: Runs staticcheck
+      #  run: staticcheck ./...
+
       - name: Runs staticcheck
-        run: staticcheck ./...
+      - uses: dominikh/staticcheck-action@v1.2.0ù
+        with:
+          version: "2022.1.1"
