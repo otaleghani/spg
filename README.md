@@ -1,7 +1,8 @@
 # Simple Placeholder Generator
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/otaleghani/spg)](https://goreportcard.com/report/github.com/otaleghani/spg) 
-![CI Tests](https://github.com/otaleghani/spg/actions/workflows/tests.yml/badge.svg)
+![CI Tests](https://github.com/otaleghani/spg/actions/workflows/tests.yml/badge.svg) 
+[![CodeFactor](https://www.codefactor.io/repository/github/otaleghani/spg/badge)](https://www.codefactor.io/repository/github/otaleghani/spg)
 
 A simple utility used to generate fake data for testing purpose.
 
