@@ -29,7 +29,6 @@ jobs:
       - name: Runs gosec
         run: gosec ./...
 
-
   style:
     name: Formatting
     runs-on: ubuntu-latest
