@@ -1,7 +1,7 @@
 package spg
 
 import (
-  "math/rand"
+	"math/rand"
 	"strconv"
 )
 
