@@ -1,12 +1,12 @@
 package spg
 
 import (
-	"math/rand"
+  "math/rand"
 	"strconv"
 )
 
 func (g Generator) randomNumber(dice int) int {
-	return rand.Intn(dice)
+	return rand.Intn(dice) // #nosec G404: Intentianally using math/rand
 }
 
 // Gives back a strigified number

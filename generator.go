@@ -3,11 +3,12 @@ package spg
 import (
 	"github.com/otaleghani/spg/internal/formatter"
 	"math/rand"
+  "crypto/rand"
 	"time"
 )
 
 type Generator struct {
-	Rng  *rand.Rand
+	Rng  *rand.Rand // #nosec G404: Intentianally using math/rand
 	Lang string
 }
 
@@ -26,7 +27,7 @@ func New(lang string) (g Generator) {
 
 func (g Generator) randomString(data []string, format string) string {
 	if len(data) > 0 {
-		randomWord := data[rand.Intn(len(data))]
+    randomWord := data[rand.Intn(len(data))] // #nosec G404: Intentianally using math/rand
 		formatter.FormatString(&randomWord, format)
 		return randomWord
 	}
