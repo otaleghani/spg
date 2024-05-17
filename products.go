@@ -51,3 +51,14 @@ func (p Product) ProductDescription(opt Options) string {
 		-1,
 	)
 }
+
+func (p Product) UUID(opt Options) string {
+	uuid := fmt.Sprintf("%v-%v-%v-%v-%v",
+		p.Gen.ExadecimalNumberFixed(8),
+		p.Gen.ExadecimalNumberFixed(4),
+		p.Gen.ExadecimalNumberFixed(4),
+		p.Gen.ExadecimalNumberFixed(4),
+		p.Gen.ExadecimalNumberFixed(12),
+	)
+	return uuid
+}

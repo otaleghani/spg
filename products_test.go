@@ -8,7 +8,7 @@ import (
 func Test_Products(t *testing.T) {
 	for i := 0; i < num_tests; i++ {
 		fmt.Printf(
-			"%v: %v, %v, %v, %v, %v, %v\n",
+			"%v: %v, %v, %v, %v, %v, %v, %v\n",
 			i,
 			g.Product().Thing(opt),
 			g.Product().Brand(opt),
@@ -16,6 +16,7 @@ func Test_Products(t *testing.T) {
 			g.Product().ProductName(opt),
 			g.Product().CompleteProductName(opt),
 			g.Product().ProductDescription(opt),
+			g.Product().UUID(opt),
 		)
 	}
 }
