@@ -10,7 +10,7 @@ var dicts = map[string]map[string][]string{
 		// People
 		"titles_male":        {"Mr.", "Doc."},
 		"titles_female":      {"Mrs.", "Doc."},
-		"gender":             {"Male", "Female", "Other"},
+		"gender":             {"Male", "Female"},
 		"first_names_female": en_females_first_names,
 		"first_names_male":   en_males_first_names,
 		"last_names":         en_last_names,
@@ -33,6 +33,16 @@ var dicts = map[string]map[string][]string{
 		"technologies":         en_technologies,
 		"product_names":        en_product_names,
 		"product_descriptions": en_product_descriptions,
+
+		// Animals
+		"mammals":    en_animals_mammals,
+		"birds":      en_animals_birds,
+		"fishes":     en_animals_fishes,
+		"insects":    en_animals_insects,
+		"pets":       en_pets,
+		"pets_names": en_pets_names,
+		"dog_breeds": en_dog_breeds,
+		"cat_breeds": en_cat_breeds,
 	},
 }
 
