@@ -189,7 +189,7 @@ spg.StringNumberFixed(5)
 - [ ] Hobbies
 
 #### Work
-
+- [ ] 
 
 #### Words
 - [ ] Random word
@@ -201,10 +201,17 @@ spg.StringNumberFixed(5)
 - [ ] Finantial record
 
 #### Animals
-- [ ] Mammals
-- [ ] Birds
-- [ ] Fishes
-- [ ] Insects
+- [x] Mammals
+- [x] Birds
+- [x] Fishes
+- [x] Insects
+- [x] Pets
+- [x] Dogs breeds
+- [x] Cats breeds
+- [x] Pet names
+
+#### Food
+- [ ] 
 
 #### Adjectives
 - [ ] Positive
