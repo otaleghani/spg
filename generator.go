@@ -18,7 +18,7 @@ type Options struct {
 
 func New(lang string) (g Generator) {
 	g = Generator{
-		Rng:  rand.New(rand.NewSource(time.Now().Unix())),
+		Rng:  rand.New(rand.NewSource(time.Now().Unix())), // #nosec G404: Intentianally using math/rand
 		Lang: lang,
 	}
 	return
@@ -26,7 +26,7 @@ func New(lang string) (g Generator) {
 
 func (g Generator) randomString(data []string, format string) string {
 	if len(data) > 0 {
-		randomWord := data[rand.Intn(len(data))]
+		randomWord := data[rand.Intn(len(data))] // #nosec G404: Intentianally using math/rand
 		formatter.FormatString(&randomWord, format)
 		return randomWord
 	}

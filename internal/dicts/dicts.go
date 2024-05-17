@@ -1,7 +1,6 @@
 package dicts
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -42,7 +41,7 @@ func GetDict(lang, source string) ([]string, error) {
 		if values, ok := dict[source]; ok {
 			return values, nil
 		}
-		return nil, errors.New(fmt.Sprint("Cannot find source %v\n", source))
+		return nil, fmt.Errorf("CANNOT FIND SOURCE %v", source)
 	}
-	return nil, errors.New(fmt.Sprint("Cannot find language %v\n", lang))
+	return nil, fmt.Errorf("CANNOT FIND LANGUAGE %v", lang)
 }

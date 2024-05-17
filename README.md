@@ -1,7 +1,7 @@
 # Simple Placeholder Generator
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/otaleghani/spg)](https://goreportcard.com/report/github.com/otaleghani/spg)
-![CI Tests](https://github.com/otaleghani/spg/actions/workflows/Tests/badge.svg)
+![Go Report Card](https://goreportcard.com/badge/github.com/otaleghani/spg)](https://goreportcard.com/report/github.com/otaleghani/spg) 
+![CI Tests](https://github.com/otaleghani/spg/actions/workflows/tests.yml/badge.svg)
 
 A simple utility used to generate fake data for testing purpose.
 
@@ -219,4 +219,3 @@ spg.StringNumberFixed(5)
 ## About the data
 
 The data in use is generated using GPT4.
-
