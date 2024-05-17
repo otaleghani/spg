@@ -46,10 +46,11 @@ func main(){
 Most of the times you will use this package inside of a loop to get more values in one go.
 
 ``` go
+opt := Options{Format: "camel"}
 spg := spg.New("en_usa")
 
 for i := 0; i < 5000; i++ {
-    fmt.Println(spg.Person().FullName())
+    fmt.Println(spg.Person().FullName(opt))
 }
 ```
 
@@ -62,27 +63,28 @@ Keep in mind that this package can generate around 300.000 records in one second
 The neutral version (`FirstName()` and `FullName()`) randomly chooses between the male or fema dictionary.
 
 ``` go
+opt := Options{}
 spg := spg.New("en_usa")
 
-spg.Person().FirstName() 
+spg.Person().FirstName(opt) 
 // e.g. "Jacob"
 
-spg.Person().MaleFirstName() 
+spg.Person().MaleFirstName(opt) 
 // e.g. "Michael"
 
-spg.Person().FemaleFirstName() 
+spg.Person().FemaleFirstName(opt) 
 // e.g. "Emily"
 
-spg.Person().LastName() 
+spg.Person().LastName(opt) 
 // e.g. "Smith"
 
-spg.Person().FullName() 
+spg.Person().FullName(opt) 
 // e.g. "Hannah Johnson"
 
-spg.Person().MaleFullName() 
+spg.Person().MaleFullName(opt) 
 // e.g. "Matthew Williams"
 
-spg.Person().FemaleFullName() 
+spg.Person().FemaleFullName(opt) 
 // e.g. "Madison Brown"
 ```
 
@@ -92,38 +94,39 @@ The `Locale` version of the places takes data from a pool of names for cities, s
 The address function is called `AddressEn()` becaouse some countries use a different approach to writing addresses. 
 
 ``` go
+opt := Options{}
 spg := spg.New("en_usa")
 
-spg.Place().City() 
+spg.Place().City(opt) 
 // e.g. "St. Petersburg"
 
-spg.Place().CityLocale() 
+spg.Place().CityLocale(opt) 
 // e.g. "New York"
 
-spg.Place().Street() 
+spg.Place().Street(opt) 
 // e.g. "Bourke Street"
 
-spg.Place().StreetLocale() 
+spg.Place().StreetLocale(opt) 
 // e.g. "Main Street"
 
-spg.Place().State() 
+spg.Place().State(opt) 
 // e.g. "Tokyo"
 
-spg.Place().StateLocale() 
+spg.Place().StateLocale(opt) 
 // e.g. "Alabama"
 
-spg.Place().Country() 
+spg.Place().Country(opt) 
 // e.g. "Thailand"
 
-spg.Place().CountryLocale() 
+spg.Place().CountryLocale(opt) 
 // e.g. "United States"
 
-spg.Place().AddressEn() 
+spg.Place().AddressEn(opt) 
 // e.g. 102 La rambla
 // Aurora, Yukon 96121
 // Zambia
 
-spg.Place().AddressEnLocale() 
+spg.Place().AddressEnLocale(opt) 
 // 100 Riverside drive
 // Boise, Washington 14139
 // United states
@@ -133,25 +136,66 @@ spg.Place().AddressEnLocale()
 N.B.: Complete Product Names and Product descriptions are hilarious.
 
 ``` go
+opt := Options{}
 spg := spg.New("en_usa")
 
-spg.Product().Thing() 
+spg.Product().Thing(opt) 
 // e.g. "Smartwatch"
 
-spg.Product().Brand() 
+spg.Product().Brand(opt) 
 // e.g. "Apple"
 
-spg.Product().Technology() 
+spg.Product().Technology(opt) 
 // e.g. "Artificial Intelligence"
 
-spg.Product().ProductName() 
+spg.Product().ProductName(opt) 
 // e.g. "QuickWave"
 
-spg.Product().CompleteProductName() 
+spg.Product().CompleteProductName(opt) 
 // e.g. "Heating pad Dolce & gabbana Quickquench with Edge computing"
 
-spg.Product().ProductDescription() 
+spg.Product().ProductDescription(opt) 
 // e.g. "Optimize your home entertainment with our streaming device, designed with Wi-fi 6. enjoy seamless streaming, high-definition video, and a user-friendly interface, all enabled by this advanced technology. transform your viewing experience with the superior capabilities of Wi-fi 6."
+
+spg.Product().UUID(opt) 
+// e.g. d303dd94-1a03-0a3a-9c95-35c16d1c2930
+```
+
+### Animals
+
+``` go
+opt := Options{}
+spg := spg.New("en_usa")
+
+spg.Animal().Mammal(opt),
+// e.g. Lion
+
+spg.Animal().Fish(opt),
+// e.g. Salmon
+
+spg.Animal().Bird(opt),
+// e.g. Eagle
+
+spg.Animal().Insect(opt),
+// e.g. Ant
+
+spg.Animal().Pet(opt),
+// e.g. Dog
+
+spg.Animal().PetName(opt),
+// e.g. Bella
+
+spg.Animal().DogBreed(opt),
+// e.g. Labrador Retriever
+
+spg.Animal().CatBreed(opt),
+// e.g. Persian
+
+spg.Animal().Sex(opt),
+// e.g. Male
+
+spg.Animal().MicrochipNumber(opt),
+// e.g. 545931400687715
 ```
 
 ### Numbers
@@ -166,6 +210,12 @@ spg.StringNumber(max)
 spg.StringNumberFixed(5)
 // e.g. 92749
 // Returns a random combination of numbers. The specified number is the lenght of the returned string..
+
+spg.ExadecimalNumber()
+// e.g. a
+
+spg.ExadecimalNumberFixed(3)
+// e.g. ae2
 ```
 
 ## To do
@@ -175,7 +225,7 @@ spg.StringNumberFixed(5)
 ### Generations to add
 
 #### Products
-- [ ] UUIDs
+- [x] UUIDs
 
 #### Person
 - [ ] Email
