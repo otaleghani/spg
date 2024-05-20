@@ -6,10 +6,7 @@ import (
 )
 
 func (g Generator) Boolean() bool {
-	if g.randomNumber(2) == 0 {
-		return true
-	}
-	return false
+	return g.randomNumber(2) == 0
 }
 
 func (g Generator) StringBoolean(opt Options) string {
