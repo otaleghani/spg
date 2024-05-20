@@ -43,6 +43,14 @@ var dicts = map[string]map[string][]string{
 		"pets_names": en_pets_names,
 		"dog_breeds": en_dog_breeds,
 		"cat_breeds": en_cat_breeds,
+
+		// Internet
+		"tld":             en_tld,
+		"email_providers": en_email_providers,
+	},
+	"general": {
+		"ccTLD": cctld,
+		"gTLD":  gtld,
 	},
 }
 
