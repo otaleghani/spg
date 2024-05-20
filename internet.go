@@ -136,3 +136,22 @@ func (g Generator) rollDomainName() string {
 	formatter.FormatString(&result, "lower")
 	return strings.Replace(result, " ", "", -1)
 }
+
+func (i Internet) Email(opt Options) string {
+  username := i.Username(opt)
+  domain := i.DomainName(opt)
+  return username + "@" + domain
+}
+
+func (i Internet) CasualEmail(opt Options) string {
+  username := i.CasualUsername(opt)
+  domain := i.EmailProvider(opt)
+  return username + "@" + domain
+}
+
+func (i Internet) BusinessEmail(opt Options) string {
+  username := i.BusinessUsername(opt)
+  domain := i.DomainNameLocale(opt)
+  return username + "@" + domain
+}
+

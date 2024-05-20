@@ -218,6 +218,52 @@ spg.ExadecimalNumberFixed(3)
 // e.g. ae2
 ```
 
+### Boolean
+``` go
+spg := spg.New("en_usa")
+
+spg.Boolean() 
+// e.g. true
+
+spg.StringBoolean()
+// e.g. true (as a string type)
+```
+
+### Internet
+``` go
+spg := spg.New("en_usa")
+
+spg.Internet().Username(Options{})
+// Either a casual Internet().CasualUsername or a Internet().BusinessUsername()
+
+spg.Internet().CasualUsername(Options{})
+// e.g. Jhonny87
+
+spg.Internet().BusinessUsername(Options{})
+// e.g. jacob.smith
+
+spg.Internet().TLD(Options{})
+// Either Internet().CCTLD() or Internet().GTLD()
+
+spg.Internet().TLDLocale(Options{})
+// e.g. .com
+
+spg.Internet().CCTLD(Options{})
+// e.g. .fr (country code domain)
+
+spg.Internet().GTLD(Options{})
+// e.g. .biz (general domains)
+
+spg.Internet().DomainName(Options{})
+// e.g. johnson.com
+
+spg.Internet().DomainNameLocale(Options{})
+// e.g. cat.us
+
+spg.Internet().EmailProvider(Options{})
+// e.g. gmail.com
+```
+
 ## To do
 
 - [ ] Add italian locale

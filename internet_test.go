@@ -8,7 +8,7 @@ import (
 func Test_Internet(t *testing.T) {
 	for i := 0; i < num_tests; i++ {
 		fmt.Printf(
-			"%v: %v, %v, %v, %v, %v, %v, %v, %v, %v, %v\n",
+			"%v: %v, %v, %v, %v, %v, %v, %v, %v, %v, %v, %v, %v, %v\n",
 			i,
 			g.Internet().TLD(opt),
 			g.Internet().TLDLocale(opt),
@@ -20,6 +20,9 @@ func Test_Internet(t *testing.T) {
 			g.Internet().BusinessUsername(Options{Format: "lower"}),
 			g.Internet().CasualUsername(Options{Format: "lower"}),
 			g.Internet().Username(Options{Format: "lower"}),
+			g.Internet().Email(Options{Format: "lower"}),
+			g.Internet().CasualEmail(Options{Format: "lower"}),
+			g.Internet().BusinessEmail(Options{Format: "lower"}),
 		)
 	}
 }
