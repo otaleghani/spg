@@ -262,6 +262,18 @@ spg.Internet().DomainNameLocale(Options{})
 
 spg.Internet().EmailProvider(Options{})
 // e.g. gmail.com
+
+spg.Internet().EmailProvider(Options{})
+// e.g. gmail.com
+
+spg.Internet().Email(Options{})
+// e.g. lucy@asics.digital
+
+spg.Internet().CasualEmail(Options{})
+// e.g. oscar@gmail.com
+
+spg.Internet().BusinessEmail(Options{})
+// e.g. g.weaver@charlie.news
 ```
 
 ## To do
