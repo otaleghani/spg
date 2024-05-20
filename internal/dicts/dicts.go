@@ -44,14 +44,14 @@ var dicts = map[string]map[string][]string{
 		"dog_breeds": en_dog_breeds,
 		"cat_breeds": en_cat_breeds,
 
-    // Internet
-    "tld": en_tld,
-    "email_providers": en_email_providers,
+		// Internet
+		"tld":             en_tld,
+		"email_providers": en_email_providers,
 	},
-  "general": {
-    "ccTLD": cctld,
-    "gTLD": gtld,
-  },
+	"general": {
+		"ccTLD": cctld,
+		"gTLD":  gtld,
+	},
 }
 
 func GetDict(lang, source string) ([]string, error) {
